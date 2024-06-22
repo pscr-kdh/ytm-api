@@ -15,9 +15,12 @@ def search_multi(ytmusic, query, search_type):
             
             imgurl = thumbnails_to_image_url(d['thumbnails'])
             track['images'] = {'coverart': imgurl, 'coverarthq': imgurl}
+            track['hub'] = {'actions': [{}, {'name': 'youtube', 'type': 'uri', 'uri': os.environ.get('DOMAIN_NAME') + 'v1/tracks/download?track_id=' + d['videoId']}]}
             track['artists'] = d['artists']
             for i in range(len(track['artists'])):
                 track['artists'][i]['adamid'] = track['artists'][i]['id']
+            if len(track['artists']) == 0:
+                track['artists'].append({'adamid': None, 'id': None, 'name': 'Various Artists'})
             track['url'] = 'https://youtu.be/' + d['videoId']
             
             dtr['tracks']['hits'].append({"track": track})
