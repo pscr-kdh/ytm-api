@@ -2,7 +2,7 @@
 
 A part of the CAU Capstone Project 2024-01, Class 04, Team 05
 
-This is essentially a drop-in replacement for our Capstone Frontend application, which depends on RapidAPI's Shazam Core API. It implements a subset of functions from the aforementioned API that are required by our frontend.
+This is essentially a drop-in replacement for our Capstone Frontend application, which depends on Ra○idAPI's S○azam C○re API. It implements a subset of functions from the aforementioned API that are required by our frontend.
 
 Written in Python, it is provided with a Dockerfile and Kubernetes configurations for deployment in your environment (in the /kube directory, only tested on the K3s cluster).
 
@@ -18,5 +18,5 @@ If you want to run it in a Kubernetes environment, you need to configure cert-ma
 
 Additionally, you may need to change the domain name configured in `ytm-api.yaml` and add your email address in `le-cert-issuer.yaml`.
 
-## License
+## Licence
 MIT, if there anyone wants to use it
