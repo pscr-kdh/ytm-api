@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ytm-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ytm-api
+  template:
+    metadata:
+      labels:
+        app: ytm-api
+    spec:
+      containers:
+      - name: ytm-api
+        image: ghcr.io/pscr-kdh/ytm-api:latest
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - secretRef:
+           name: x-rapidapi-key
+        env:
+        - name: DOMAIN_NAME
+          value: "https://api.283.kr/"
+
+      imagePullSecrets:
+      - name: ghcr
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ytm-api-svc
+spec:
+  selector:
+    app: ytm-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
